@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
-// Update the import path below to the correct location of your API module if it's not in the same folder.
-// For example, if your API file is in 'src/api/API.ts', use '../api/API'
+
 import API from "../API";  // Cambia la ruta según la ubicación real de tu archivo API
 import { Link, useNavigate } from "react-router-dom";
 
@@ -15,7 +14,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+            e.preventDefault();
 
         // Validaciones básicas
         if (!email || !password) {
