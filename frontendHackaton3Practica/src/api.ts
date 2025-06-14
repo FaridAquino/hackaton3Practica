@@ -1,5 +1,6 @@
 import type { AxiosInstance } from "axios";
 import axios from "axios";
+import type { GetTasks } from "./JsonFormat/GetTasks";
 
 class API {
     private apiInstance: AxiosInstance;
@@ -26,5 +27,10 @@ class API {
         );
     }
 
-    
+    getTasks(username: string) {
+        
+        return this.apiInstance.get<GetTasks>(`/users/${username}`);
+    }
 }
+
+export default new API();

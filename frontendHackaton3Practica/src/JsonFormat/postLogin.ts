@@ -4,6 +4,5 @@ export interface PostLogin {
     user: {
         id: number;
         name: string;
-    }
-
+    };
 }

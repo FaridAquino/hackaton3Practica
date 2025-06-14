@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { loginUser } from "../api/api";
-import { Link, useNavigate} from "react-router-dom"; // Para redirigir al usuario después del inicio de sesión
+import { Link, useNavigate } from "react-router-dom"; // Para redirigir al usuario después del inicio de sesión
 
 
-const LoginForm = () => {
+const Login = () => {
 
 
     const [loading, setLoading] = useState(false); // Para manejar el estado de carga del botón
@@ -12,7 +12,7 @@ const LoginForm = () => {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState(''); // Para manejar mensajes de éxito o error
     const [errorMessage, setError] = useState(''); // Para manejar errores
-    
+
     const navigate = useNavigate(); // Para redirigir al usuario después del inicio de sesión
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault(); // Evita que el formulario se envíe de forma predeterminada
@@ -46,22 +46,21 @@ const LoginForm = () => {
             setLoading(false); // Detiene el estado de carga después de iniciar sesión
             // Aquí puedes guardar el token o la información del usuario en el estado global o en localStorage si es necesario
             localStorage.setItem('token', data.token); // Guarda el token en localStorage (ajusta según tu API)
-            
 
             navigate('/'); // Redirige al usuario a la página principal o a donde desees después del inicio de sesión
         } catch (error) {
             console.error('Error al iniciar sesión:', error);
             setLoading(false); // Detiene el estado de carga si hay un error
-            
+
             setError('Error al iniciar sesión. Por favor, verifica tus credenciales.'); // Mensaje de error
             setMessage(''); // Limpia cualquier mensaje de éxito previo
-            
+
         } finally {
             setLoading(false); // Detiene el estado de carga después de intentar iniciar sesión
         }
     }
 
-    
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
             {message && (
@@ -80,39 +79,39 @@ const LoginForm = () => {
             </h2>
             <form onSubmit={handleSubmit} action="" className="w-full max-w-sm mx-auto bg-white p-8 rounded-lg shadow-md">
                 <div className="flex flex-col space-y-4 mb-6">
-                    <input 
-                    value={email}
-                    onChange={ (e) => setEmail(e.target.value)}
-                    type="text" 
-                    name=""
-                    id=""
-                    placeholder="Username" 
-                    className="w-full p-2 border rounded"
-    />  
-                    <input 
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    type="password" name="" id="" placeholder="Password" 
-                    className="w-full p-2 border rounded"
+                    <input
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        type="text"
+                        name=""
+                        id=""
+                        placeholder="Username"
+                        className="w-full p-2 border rounded"
+                    />
+                    <input
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        type="password" name="" id="" placeholder="Password"
+                        className="w-full p-2 border rounded"
                     />
                 </div>
                 <button type="submit" disabled={loading}
 
-                 className="w-full py-2 px-4 rounded transition-colors ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600 text-white'}">
+                    className="w-full py-2 px-4 rounded transition-colors ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600 text-white'}">
                     {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
-                    </button>
-                
+                </button>
+
                 <input type="checkbox" name="Rememberme" id="Recuerdame" />
                 <p>
                     ¿No tienes una cuenta?
                     <Link to="/" className="text-blue-500 hover:underline">Inicia sesión aquí</Link>
-                </p>            
+                </p>
             </form>
         </div>
     );
 }
 
-export default LoginForm;
+export default Login;
 //         {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
 //         </button>
 //     );
