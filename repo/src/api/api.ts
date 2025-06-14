@@ -36,7 +36,7 @@ interface loginData {
 
 export const loginUser = async (data: loginData) => {
     try {
-        const response = await llamaApi.post('auth/login', data); // endpoint puedes cambiarlo a conveniencia
+        const response = await llamaApi.post('api/auth/login', data); // endpoint puedes cambiarlo a conveniencia
         console.log('Usuario logueado:', response.data);
         return response.data; // Devuelve la respuesta para confirmar que se envió.
     } catch (error) {
