@@ -1,5 +1,5 @@
-import Login from './Pages/Login'
-import Info from './Pages/Info'
+import Login from './Pages/login'
+import Info from './Pages/info'
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 

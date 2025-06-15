@@ -1,6 +1,7 @@
 import axios from "axios"
+import type { PostLogin } from "../JsonFormat/PostLogin";
 
-const baseURL = 'http://localhost:8080/api'; // Reemplaza con la URL de tu API
+const baseURL = 'http://localhost:8080'; // Reemplaza con la URL de tu API
 
 export const llamaApi = axios.create({
     baseURL: baseURL, // Reemplaza con la URL de tu API
@@ -29,12 +30,7 @@ export const registerUser = async (data : UserInterface ) => {
     }
 }
 
-interface loginData {
-    email: string;
-    password: string;
-}
-
-export const loginUser = async (data: loginData) => {
+export const loginUser = async (data: PostLogin) => {
     try {
         const response = await llamaApi.post('api/auth/login', data); // endpoint puedes cambiarlo a conveniencia
         console.log('Usuario logueado:', response.data);
