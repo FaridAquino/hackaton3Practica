@@ -1,6 +1,7 @@
 import type { AxiosInstance } from "axios";
 import axios from "axios";
 import type { GetTasks } from "./JsonFormat/GetTasks";
+import type { PostLogin } from "./JsonFormat/PostLogin";
 
 class API {
     private apiInstance: AxiosInstance;
@@ -28,9 +29,16 @@ class API {
     }
 
     getTasks(username: string) {
-        
+
         return this.apiInstance.get<GetTasks>(`/users/${username}`);
     }
+
+    loginUser(credentials: { username: string; password: string }) {
+        return this.apiInstance.post<PostLogin>('/api/auth/login/',  credentials)
+            .then(res => res.data);
+    }
+
+
 }
 
 export default new API();
